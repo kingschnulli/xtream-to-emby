@@ -15,5 +15,7 @@ framework:
         #app: cache.adapter.apcu
 
         # Namespaced pools use the above "app" backend by default
-        #pools:
-            #my.dedicated.cache: null
+        pools:
+            xtream_cache:
+                adapter: cache.app
+                default_lifetime: '%app.xtream.cache_lifetime%'
