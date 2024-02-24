@@ -64,7 +64,7 @@ class XtreamSeriesCommand extends Command
                         $episodeName = sprintf('%s S%02dE%02d', $safeName->getName(), $season, $episode->episode_num);
                         $this->filesystem->dumpFile(
                             Path::join($baseName, 'Season ' . $season, $episodeName . '.strm'),
-                            $this->client->getStreamUrl($episode->id) . '.' . $episode->container_extension
+                            $this->client->getStreamUrl($episode->id, 'series') . '.' . $episode->container_extension
                         );
                         $this->filesystem->dumpFile(
                             Path::join($baseName, 'Season ' . $season, $episodeName . '.json'),

@@ -58,7 +58,7 @@ class XtreamVODCommand extends Command
                 $baseName = Path::join($directory, $safeName->getFirstLetter(), $safeName->getName(), $safeName->getName());
                 $this->filesystem->dumpFile(
                     Path::join($baseName . '.strm'),
-                    $this->client->getStreamUrl($stream->stream_id). '.' . $stream->container_extension
+                    $this->client->getStreamUrl($stream->stream_id, 'movie'). '.' . $stream->container_extension
                 );
                 $this->filesystem->dumpFile(
                     Path::join($baseName . '.json'),

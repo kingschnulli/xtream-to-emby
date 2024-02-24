@@ -4,6 +4,7 @@ namespace App\Service\Xtream;
 
 use App\Service\Xtream\Exception\XtreamException;
 use App\Service\Xtream\Struct\XtreamUser;
+use Symfony\Component\Filesystem\Path;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -48,9 +49,9 @@ class XtreamApiClient
         });
     }
 
-    public function getStreamUrl($streamId): string
+    public function getStreamUrl(string $streamId, ?string $folder = ''): string
     {
-        return $this->user->getHost() . '/' . $this->user->getUsername() . '/' . $this->user->getPassword() . '/' . $streamId;
+        return $this->user->getHost() . '/' . Path::join($folder, $this->user->getUsername(), $this->user->getPassword(), $streamId);
     }
 
     public function getAccountInfo(): object
